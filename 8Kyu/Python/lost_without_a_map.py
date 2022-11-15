@@ -14,6 +14,3 @@ def maps1(a):
 def maps2(a):
     def double(n): return n*2
     return [double(x) for x in a]
-
-
-# lambda function
