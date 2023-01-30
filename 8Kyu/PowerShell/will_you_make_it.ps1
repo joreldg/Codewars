@@ -4,7 +4,7 @@
 
 # Function should return true if it is possible and false if not.
 
-function zero_fuel([float[]]$distance,[float[]]$mpg,[float[]]$fuel_left){
+function zero_fuel([float]$distance,[float]$mpg,[float]$fuel_left){
     $capacity = $mpg * $fuel_left
     if ($distance -le $capacity) {
         return "good to go"
@@ -14,6 +14,16 @@ function zero_fuel([float[]]$distance,[float[]]$mpg,[float[]]$fuel_left){
         return "I don't know what happened"
     }
 }
-zero_fuel(50,22,10)
 
-#   I DON'T KNOW WHY THIS WON'T WORK
+
+function zero_fuel2([float]$distance,[float]$mpg,[float]$fuel_left) {
+    $fuelNeeded = $distance / $mpg
+    if ($fuel_left - $fuelNeeded -lt 0) {
+        return $false
+    } else {
+        return $true
+    }
+}
+
+zero_fuel 50 10 3
+zero_fuel2 50 20 3
